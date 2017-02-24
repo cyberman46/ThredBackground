@@ -10,9 +10,32 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var timer = Timer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(ViewController.didLoadCheckBackground), userInfo: nil , repeats: true)
+        
+        
+    }
+    
+    func didLoadCheckBackground(){
+    
+        let state: UIApplicationState = UIApplication.shared.applicationState
+
+        
+        if state == .background {
+            
+            print("in background")
+        }
+        else if state == .active {
+            
+            print("in active")
+        }
+
+        
     }
 
     override func didReceiveMemoryWarning() {
